@@ -1682,7 +1682,7 @@ $("#finish-purchase-summary").click(function() {
     
     
     if ( removeFromCartCounter == productIdentifiers.length) {
-        console.log("will reload");
+        console.log("will reload"); //testing if it works
         //location.reload();
     };
     
