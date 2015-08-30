@@ -334,6 +334,29 @@ a:hover {
   	position: relative;
 }
 
+.king {
+    background-image: url(images/king.png);
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-attachment: fixed;
+    height: 833px;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    text-align: center;
+    padding-top: 650px;
+    color: #FEEFD6;
+    position: relative;
+}
+
+#up {
+    background: url(images/up.png);
+    width: 45px;
+    height: 45px;
+    margin: 0 auto;
+}
+
 /*-------------------------------------------------Contact Page---------------------------------------------*/
 
 input, textarea {
