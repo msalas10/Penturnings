@@ -27,7 +27,7 @@ body {
 }
 
 .navbar-nav {
-	padding-top: 16px; 
+	padding-top: 16px;
 }
 
 */
@@ -93,7 +93,7 @@ a:hover {
 }
 
 .navbar-nav {
-    padding-top: 16px; 
+    padding-top: 16px;
 }
 
 
@@ -277,7 +277,7 @@ a:hover {
 	padding-top: 60px;
 	padding-bottom: 60px;
 	text-align: center;
-	color: #424242; 
+	color: #424242;
 }
 
 .footer a {
@@ -426,7 +426,7 @@ input, textarea {
 
 #header {
     background: #424242;
-    padding: 10px 0px 10px 0px; 
+    padding: 10px 0px 10px 0px;
     font-weight: bold;
     position: fixed;
     z-index: 1;
@@ -480,7 +480,7 @@ input, textarea {
     width: 100%;
     padding-top: 50px;
     padding-bottom: 50px;
-    background-color: rgba(0,0,0,0.6); 
+    background-color: rgba(0,0,0,0.6);
     height: 100%;
     display: none;
     overflow-y:scroll;
@@ -497,14 +497,14 @@ input, textarea {
 
 #cart-header {
     border-bottom: solid 1px #cccccc;
-    padding: 15px; 
+    padding: 15px;
     font-weight: bold;
     margin-left: 0px;
     margin-right: 0px;
 }
 
 .cart-title {
-    text-align: center;  
+    text-align: center;
 }
 
 .hide-cart {
@@ -515,7 +515,7 @@ input, textarea {
 
 .back-cart {
     text-align: left;
-    color: #2584A4;  
+    color: #2584A4;
     cursor: pointer;
 }
 
@@ -586,7 +586,7 @@ input, textarea {
 
 .division-line {
     border-bottom: solid 1px #cccccc;
-    
+
 }
 
 .yellow-bg {
@@ -624,17 +624,17 @@ input, textarea {
     color: #999;
 }
 
-/* ////// ----------- SHIPPING ----------- ////// */  
+/* ////// ----------- SHIPPING ----------- ////// */
 
 
 #shipping {
     display: none;
-    padding-top: 50px; 
+    padding-top: 50px;
     width: 100%;
     height: 100%;
     position: fixed;
     z-index: 21;
-    background-color:  rgba(0,0,0,0.6); 
+    background-color:  rgba(0,0,0,0.6);
     overflow-y:scroll;
     overflow-x:hidden;
 }
@@ -645,12 +645,12 @@ input, textarea {
     padding-bottom: 15px;
     border: 2px solid #444;
     background-color: white;
-    border-radius: 10px;     
+    border-radius: 10px;
 }
 
 #shipping-header {
     border-bottom: solid 1px #cccccc;
-    padding: 15px; 
+    padding: 15px;
     font-weight: bold;
     margin-left: 0px;
     margin-right: 0px;
@@ -704,17 +704,17 @@ input, textarea {
 }
 
 
-/* ////// ------------ BILLING ----------- ////// */  
+/* ////// ------------ BILLING ----------- ////// */
 
 
 #billing {
     display: none;
-    padding-top: 50px; 
+    padding-top: 50px;
     width: 100%;
     height: 100%;
     position: fixed;
     z-index: 22;
-    background-color:  rgba(0,0,0,0.6); 
+    background-color:  rgba(0,0,0,0.6);
     overflow-y:scroll;
     overflow-x:hidden;
 }
@@ -725,12 +725,12 @@ input, textarea {
     padding-bottom: 15px;
     border: 2px solid #444;
     background-color: white;
-    border-radius: 10px;     
+    border-radius: 10px;
 }
 
 #billing-header {
     border-bottom: solid 1px #cccccc;
-    padding: 15px; 
+    padding: 15px;
     font-weight: bold;
     margin-left: 0px;
     margin-right: 0px;
@@ -772,15 +772,15 @@ input, textarea {
     cursor: pointer;
 }
 
-/* ////// ------------ PAYMENT ----------- ////// */     
+/* ////// ------------ PAYMENT ----------- ////// */
 
 #checkout {
-    padding-top: 50px; 
+    padding-top: 50px;
     width: 100%;
     height: 100%;
     position: fixed;
     z-index: 23;
-    background-color:  rgba(0,0,0,0.6); 
+    background-color:  rgba(0,0,0,0.6);
     display: none;
     overflow-y:scroll;
     overflow-x:hidden;
@@ -791,13 +791,13 @@ input, textarea {
     padding-bottom: 15px;
     border: 2px solid #444;
     background-color: white;
-    border-radius: 10px;   
-    
+    border-radius: 10px;
+
 }
 
 #checkout-header {
     border-bottom: solid 1px #cccccc;
-    padding: 15px; 
+    padding: 15px;
     font-weight: bold;
     margin-left: 0px;
     margin-right: 0px;
@@ -832,15 +832,15 @@ input, textarea {
 }
 
 
-/* ////// ------------ PURCHASE SUMMARY ----------- ////// */     
+/* ////// ------------ PURCHASE SUMMARY ----------- ////// */
 
 #purchase-summary {
-    padding-top: 50px; 
+    padding-top: 50px;
     width: 100%;
     height: 100%;
     position: fixed;
     z-index: 24;
-    background-color:  rgba(0,0,0,0.6); 
+    background-color:  rgba(0,0,0,0.6);
     display: none;
     overflow-y:scroll;
     overflow-x:hidden;
@@ -851,13 +851,13 @@ input, textarea {
     padding-bottom: 15px;
     border: 2px solid #444;
     background-color: white;
-    border-radius: 10px;   
-    
+    border-radius: 10px;
+
 }
 
 #purchase-summary-header {
     border-bottom: solid 1px #cccccc;
-    padding: 15px; 
+    padding: 15px;
     font-weight: bold;
     margin-left: 0px;
     margin-right: 0px;
