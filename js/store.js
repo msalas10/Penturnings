@@ -28,6 +28,7 @@ var moltin = new Moltin({publicId: 'xVyR52x8y0oSs9dovYyV6u0bjkr2kY4JNDFuqJdf'});
 moltin.Authenticate(function () {
     
     // Make your calls here
+    
     var products = moltin.Product.List({status: 1, limit: 15, offset: 0});
     console.log(products);
     
