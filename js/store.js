@@ -1679,7 +1679,12 @@ $("#finish-purchase-summary").click(function() {
     //var finalCart = moltin.Cart.Contents();
     //var finalCartCounter = finalCart.total_items;
     //$("#cart-counter").text(cartCounter);
-    location.reload();
+    
+    
+    if ( removeFromCartCounter == productIdentifiers.length) {
+        console.log("will reload");
+        //location.reload();
+    };
     
 });
 
