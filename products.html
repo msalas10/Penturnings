@@ -1,0 +1,650 @@
+<!DOCTYPE>
+
+<html>
+    <head>
+        <title id="products-title">Products</title>
+
+        <!-- BOOTSTRAP -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <!-- JQUERY -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+        <!-- MOLTIN -->
+        <script src="https://js.moltin.com/v1"></script>
+
+        <!-- CSS -->
+        <link rel="stylesheet" type="text/css" href="css/store.css" />
+        
+        <!-- BOOTSTRAP 
+	   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+	   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+        -->
+
+
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-static-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a href="index.html" class="navbar-brand"><img src="css/images/logo.png" height="61" width="203"></a>
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="index.html" class="active">HOME</a></li>
+                        <li><a href="store.html" id="toggle-store">PENS</a></li>
+                        <li><a href="products.html" id="toggle-products">PRODUCTS</a></li>
+                        <li><a href="aboutme.html">ABOUT</a></li>
+                        <li><a href="contactus.html">CONTACT</a></li>
+                    </ul>
+                </div>  
+            </div>
+        </div>
+        
+        <!-- HEADER -->
+        <div id="header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-4">
+                        <div id="header-logo"></div>
+                    </div>
+                    <div class="col-xs-4">
+                        <div id="header-title"></div>
+                    </div>
+                    <div class="col-xs-4">
+                        <div id="header-cart">
+                            <div id="cart-counter">0</div>
+                            <div id="cart-text">CART</div>
+                        </div>    
+                    </div>
+                </div>
+            </div>       
+        </div>
+        <div id="product-added-alert">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12" id="cart-alert-text" >Item added to cart</div>
+                </div>        
+            </div>
+        </div>
+
+
+        <!-- CART -->
+        <div id="cart">
+            <div class="container"> 
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <div id="cart-section">
+                            <div id="cart-header" class="row">
+                                <div class="cart-title col-xs-4 col-xs-offset-4">CART</div>
+                                <div class="hide-cart col-xs-4">HIDE</div>
+                            </div>
+                            <div  id="cart-alert" class="row">
+                                <div class="col-md-12" id="cart-alert-text" >Item deleted from cart</div>
+                            </div>
+                            
+
+                                
+                            <div id="cart-all-products">
+                                <table id="cart-product-table" class="cart-table" >
+                                    <tr>
+                                        <td Style="height: 60px; width: 80px;" ></td>
+                                        <td class="list-style-3">Product</td> 
+                                        <td class="list-style-3 input-table-style">Quantity</td>
+                                        <td class="list-style-3 input-table-style">Price</td>
+                                        <td class="list-style-3 input-table-style">Total Price</td>
+                                    </tr>
+                                </table  >
+                                
+                                <div id="cart-empty">The cart is empty :( <br />
+                                    Browse Perturnings, then choose your favorite products <br />
+                                    and add them to this cart!</div>
+                                
+                                <br />
+                                <br />
+                                <div class="division-line"></div>
+                                <table class="cart-table">
+                                    <tr class="cart-total">
+                                        <td Style="height: 60px; width: 80px;"></td>
+                                        <td class="list-style-3 input-table-style">Total Without Tax</td>
+                                        <td class="list-style-3" id="cart-subtotal"></td>
+                                    </tr>
+                                    <tr class="yellow-bg">
+                                        <td Style="height: 60px; width: 80px;"></td>
+                                        <td class="list-style-1 input-table-style">Total</td> 
+                                        <td class="list-style-1 cart-total-number"></td>
+                                    </tr>
+
+                                </table>
+
+                                <br />
+                                <br />
+
+                                <div id="cart-next">NEXT</div>
+
+                                <br />
+                            </div>
+                        </div>          
+                    </div>
+                </div>
+            </div>   
+        </div>   
+        
+        <!-- SHIPPING -->
+        <div id="shipping">
+            <div class="container">     
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+
+                        <div id="shipping-section">
+                            <div id="shipping-header" class="row">
+                                <div class="back-cart col-xs-4" id="back-shipping">BACK</div>
+                                <div class="cart-title col-xs-4">SHIPPING ADDRESS</div>
+                                <div class="hide-cart col-xs-4">HIDE</div>
+                            </div>
+                            <div  id="shipping-alert" class="row">
+                                <div class="col-md-12" id="cart-alert-text" >Please fill the Shipping Address correctly</div>
+                            </div>
+
+                            <div id="shipping-body">
+
+                                <form role="form" id="shipping-form">
+                                    <div class="row form-row-center">
+                                        <div class="col-md-6"><input type="text" id="first_name" class="form-control" maxlength="60" placeholder="First name"/></div>
+                                        <div class="col-md-6"><input type="text" id="last_name" class="form-control" maxlength="60" placeholder="Last name"/></div>
+                                    </div>
+                                    <div class="row form-row-center">
+                                        <div class="col-md-6"><input type="text" id="address1" class="form-control" maxlength="60" placeholder="Address 1"/></div>
+                                        <div class="col-md-6"><input type="text" id="address2" class="form-control" maxlength="60" placeholder="Address 2"/></div>
+                                    </div>
+                                    <div class="row form-row-center">
+                                        <div class="col-md-6"><input type="text" id="city" class="form-control" maxlength="60" placeholder="City"/></div>
+                                        <div class="col-md-6"><input type="text" id="county" class="form-control" maxlength="60" placeholder="County"/></div>
+                                    </div>
+                                    <div class="row form-row-center">
+                                        <div class="col-md-6"><input type="text" id="country" class="form-control" maxlength="60" placeholder="Country"/></div>
+                                        <div class="col-md-6"><input type="text" id="post_code" class="form-control" maxlength="60" placeholder="Postcode"/></div>
+                                    </div>
+                                    <div class="row form-row-center">
+                                        <div class="col-md-6"><input type="text" id="phone" class="form-control" maxlength="60" placeholder="Phone"/>
+                                        </div>
+                                        <div class="col-md-4 bill-me-here">Bill me to this address</div>
+                                        <div class="col-md-2"><input type="checkbox"></div>
+                                    </div>
+                                </form>
+                                
+                                <div class="division-line"></div>
+                                
+                                <br />
+                                <br />
+
+                                <div id="shipping-next">NEXT</div>
+
+                                <br />
+
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+        </div>
+ 
+        <div id="billing">
+            <div class="container">     
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+
+                        <div id="billing-section">
+                            <div id="billing-header" class="row">
+                                <div class="back-cart col-xs-4" id="back-billing">BACK</div>
+                                <div class="cart-title col-xs-4">BILLING ADDRESS</div>
+                                <div class="hide-cart col-xs-4">HIDE</div>
+                            </div>
+                            <div  id="billing-alert" class="row">
+                                <div class="col-md-12" id="cart-alert-text" >Please fill the Billing Address correctly</div>
+                            </div>
+
+                            <div id="billing-body">
+
+                                <form role="form">
+                                    <div class="row form-row-center">
+                                        <div class="col-md-6"><input type="text" id="billing-first_name" class="form-control" maxlength="60" placeholder="First name"/></div>
+                                        <div class="col-md-6"><input type="text" id="billing-last_name" class="form-control" maxlength="60" placeholder="Last name"/></div>
+                                    </div>
+                                    <div class="row form-row-center">
+                                        <div class="col-md-6"><input type="text" id="billing-address1" class="form-control" maxlength="60" placeholder="Address 1"/></div>
+                                        <div class="col-md-6"><input type="text" id="billing-address2" class="form-control" maxlength="60" placeholder="Address 2"/></div>
+                                    </div>
+                                    <div class="row form-row-center">
+                                        <div class="col-md-6"><input type="text" id="billing-city" class="form-control" maxlength="60" placeholder="City"/></div>
+                                        <div class="col-md-6"><input type="text" id="billing-county" class="form-control" maxlength="60" placeholder="County"/></div>
+                                    </div>
+                                    <div class="row form-row-center">
+                                        <div class="col-md-6"><input type="text" id="billing-country" class="form-control" maxlength="60" placeholder="Country"/></div>
+                                        <div class="col-md-6"><input type="text" id="billing-post_code" class="form-control" maxlength="60" placeholder="Postcode"/></div>
+                                    </div>
+                                    <div class="row form-row-center">
+                                        <div class="col-md-6 col-md-offset-3"><input type="text" id="billing-phone" class="form-control" maxlength="60" placeholder="Phone"/>
+                                        </div>
+                                    </div>
+                                </form>
+                                
+                                <div class="division-line"></div>
+                                
+                                <br />
+                                <br />
+
+                                <div id="billing-next">NEXT</div>
+
+                                <br />
+
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+        </div>
+        
+        
+        
+        
+        <!-- CHECKOUT -->
+        <div id="checkout">
+            <div class="container">     
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+
+                        <div id="checkout-section">
+                            <div id="checkout-header" class="row">
+                                <div class="back-cart col-xs-4" id="back-checkout">BACK</div>
+                                <div class="cart-title col-xs-4">CHECKOUT</div>
+                                <div class="hide-cart col-xs-4">HIDE</div>
+                            </div>
+                            
+                            <table class="cart-table">
+                                <tr class="yellow-bg">
+                                    <td Style="height: 100px; width: 100px;"></td>
+                                    <td class="list-style-1 input-table-style">Total</td> 
+                                    <td class="list-style-1 cart-total-number"></td>
+                                </tr>
+                            </table>
+                            
+                            
+                            <div class="division-line"></div>
+                        
+
+
+                            <div id="checkout-body">
+
+                                <form role="form">
+                                    <div class="row form-row-center">
+                                        <div class="col-xs-6"><input type="text" id="card-number" class="form-control" maxlength="60" placeholder="Card Number"/></div>
+                                        <div class="col-xs-6"><input type="text" id="card-name" class="form-control" maxlength="60" placeholder="Full Name"/></div>
+                                    </div>
+                                    <div class="row form-row-center">
+                                        <div class="col-xs-4"><input type="text" id="expiry-month" class="form-control" maxlength="2" placeholder="Expiry Month"/></div>
+                                        <div class="col-xs-4"><input type="text" id="expiryYear" class="form-control" maxlength="4" placeholder="Expiry Year"/></div>
+                                        <div class="col-xs-4"><input type="text" id="card-cvv" class="form-control" maxlength="3" placeholder="CVV"/></div>
+                                    </div>
+
+                                </form>  
+
+
+                            </div>
+
+                            <!-- CHECKOUT -->
+                            <div class="division-line"></div>
+                            <br />
+                            <br />
+
+                            <div id="finish-checkout"><div class="finish-purchase">PURCHASE</div></div>
+
+                            <br />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PURCHASE SUMMARY-->
+        <div id="purchase-summary">
+            <div class="container">     
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+
+                        <div id="purchase-summary-section">
+                            <div id="purchase-summary-header" class="row">
+                                <div class="cart-title col-xs-4 col-xs-offset-4">PURCHASE SUMMARY</div>
+                            </div>
+                            
+                            <table class="cart-table">
+                                <tr class="yellow-bg">
+                                    <td Style="height: 100px; width: 100px;"></td>
+                                    <td class="list-style-1 input-table-style">Total</td> 
+                                    <td class="list-style-1 cart-total-number"></td>
+                                </tr>
+                            </table>
+                            
+                            <div class="division-line"></div>
+                            
+                            <br/>
+                            <br/>
+                            
+                            
+                            <div class="row">
+                                <div class="col-md-8 col-md-offset-2">
+                                    <h2 style="text-align: center; color: #2584A4;">NOTHING HAS BEEN CHARGED</h1>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-8 col-md-offset-2">
+                                    <h2 style="text-align: center; color: #444;">PAGE UNDER CONSTRUCTION</h1>
+                                </div>
+                            </div>
+                            
+                            <br/>
+                            <br/>
+                            
+
+                            <!-- CHECKOUT -->
+                            <div class="division-line"></div>
+                            <br />
+                            <br />
+
+                            <div id="finish-purchase-summary"><div class="finish-purchase-summary">FINISH</div></div>
+
+                            <br />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- TITLE -->
+        <div id="white">
+            <div class="container">
+                <div class="row" style="text-align:center; margin-bottom:30px; font-weight:bold; margin-top:50px;">
+                    <div class="col-md-12">
+                        <h1 class="white-text page-headline" style="color:#231f20">PRODUCTS</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- STORE -->
+        <div id="store">
+            <div class="container">   
+                <div class="row item-row products-row">
+                    <div class="col-md-4">
+                        <div class="item">
+                            <div id="product-img-3"></div>
+                             <div class="row">
+                                 <div class="col-md-12 item-product-name" id="pn3"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 item-product-price" id="pp3"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 item-product-description" id="pd3"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 item-add-amout-div" ><input class="item-add-amout" placeholder="1" value="1" /></div>
+                                <div class="col-md-6 add-to-cart" value="4">ADD TO CART</div>
+                            </div>
+                        </div>
+                    </div>
+
+                     <div class="col-md-4">
+                        <div class="item">
+                            <div id="product-img-1"></div>
+                            <div class="row">
+                                 <div class="col-md-12 item-product-name" id="pn1"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 item-product-price" id="pp1"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 item-product-description" id="pd1"></div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 item-add-amout-div" ><input class="item-add-amout" placeholder="1" value="1" /></div>
+                                <div class="col-md-6 add-to-cart" value="2">ADD TO CART <img class="loading-gif" src="img/loader.gif" /></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="item">
+                            <div id="product-img-2"></div>
+                            <div class="row">
+                                 <div class="col-md-12 item-product-name" id="pn2"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 item-product-price" id="pp2"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 item-product-description" id="pd2"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 item-add-amout-div" ><input class="item-add-amout" placeholder="1" value="1" /></div>
+                                <div class="col-md-6 add-to-cart" value="3">ADD TO CART</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row item-row pens-row">
+                    <div class="col-md-4">
+                        <div class="item">
+                            <div id="product-img-0"></div>
+                             <div class="row">
+                                 <div class="col-md-12 item-product-name" id="pn0"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 item-product-price" id="pp0"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 item-product-description" id="pd0"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 item-add-amout-div" ><input class="item-add-amout" placeholder="1" value="1" /></div>
+                                <div class="col-md-6 add-to-cart" value="1">ADD TO CART</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="item">
+                            <div id="product-img-4"></div>
+                            <div class="row">
+                                 <div class="col-md-12 item-product-name" id="pn4"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 item-product-price" id="pp4"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 item-product-description" id="pd4"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 item-add-amout-div" ><input class="item-add-amout" placeholder="1" value="1" /></div>
+                                <div class="col-md-6 add-to-cart" value="5">ADD TO CART</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="item">
+                            <div id="product-img-5"></div>
+                            <div class="row">
+                                 <div class="col-md-12 item-product-name" id="pn5"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 item-product-price" id="pp5"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 item-product-description" id="pd5"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 item-add-amout-div" ><input class="item-add-amout" placeholder="1" value="1" /></div>
+                                <div class="col-md-6 add-to-cart" value="6">ADD TO CART</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row item-row pens-row">
+                    <div class="col-md-4">
+                        <div class="item">
+                            <div id="product-img-6"></div>
+                             <div class="row">
+                                 <div class="col-md-12 item-product-name" id="pn6"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 item-product-price" id="pp6"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 item-product-description" id="pd6"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 item-add-amout-div" ><input class="item-add-amout" placeholder="1" value="1" /></div>
+                                <div class="col-md-6 add-to-cart" value="7">ADD TO CART</div>
+                            </div>
+                        </div>
+                    </div>
+
+                     <div class="col-md-4">
+                        <div class="item">
+                            <div id="product-img-7"></div>
+                            <div class="row">
+                                 <div class="col-md-12 item-product-name" id="pn7"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 item-product-price" id="pp7"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 item-product-description" id="pd7"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 item-add-amout-div" ><input class="item-add-amout" placeholder="1" value="1" /></div>
+                                <div class="col-md-6 add-to-cart" value="8">ADD TO CART</div>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="col-md-4">
+                        <div class="item">
+                            <div id="product-img-8"></div>
+                            <div class="row">
+                                 <div class="col-md-12 item-product-name" id="pn8"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 item-product-price" id="pp8"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 item-product-description" id="pd8"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 item-add-amout-div" ><input class="item-add-amout" placeholder="1" value="1" /></div>
+                                <div class="col-md-6 add-to-cart" value="9">ADD TO CART</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row item-row pens-row">
+                    <div class="col-md-4">
+                        <div class="item">
+                            <div id="product-img-9"></div>
+                             <div class="row">
+                                 <div class="col-md-12 item-product-name" id="pn9"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 item-product-price" id="pp9"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 item-product-description" id="pd9"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 item-add-amout-div" ><input class="item-add-amout" placeholder="1" value="1" /></div>
+                                <div class="col-md-6 add-to-cart" value="10">ADD TO CART</div>
+                            </div>
+                        </div>
+                    </div>
+
+                     <div class="col-md-4">
+                        <div class="item">
+                            <div id="product-img-10"></div>
+                            <div class="row">
+                                 <div class="col-md-12 item-product-name" id="pn10"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 item-product-price" id="pp10"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 item-product-description" id="pd10"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 item-add-amout-div" ><input class="item-add-amout" placeholder="1" value="1" /></div>
+                                <div class="col-md-6 add-to-cart" value="11">ADD TO CART</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        
+        <!-- FOOTER -->
+
+        <div class="footer">
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-2">
+                        <a href="index.html">HOME</a>
+                    </div>
+                    <div class="col-md-2">
+                        <a href="#">PENS</a>
+                    </div>
+                    <div class="col-md-2">
+                        <a href="#">PRODUCTS</a>
+                    </div>
+                    <div class="col-md-2">
+                        <a href="aboutme.html">ABOUT</a>
+                    </div>
+                    <div class="col-md-2">
+                        <a href="contactus.html">CONTACT</a>
+                    </div>
+                    <div class="col-md-1"></div>
+                </div>
+                <div class="row" style="margin-top:50px;">
+                    <div class="col-md-12">
+                        <div class="decoration02"></div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top:120px;">
+                    <div class="col-md-12">
+                        <h4>COPYRIGHT @ PENTURNINGS.COM 2015</h4>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+            
+       
+        <script src="js/store.js" ></script>
+
+    </body>
+
+</html>
