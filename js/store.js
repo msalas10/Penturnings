@@ -8,7 +8,7 @@ if ($("#pens-title")[0]) {
     $(".pens-row").show();
     paginationLimit = 15;
     paginationOffset = 0;
-} 
+}
 
 if ($("#products-title")[0]) {
     $(".pens-row").hide();
@@ -26,50 +26,50 @@ var productIdentifiersbyId = {};
 var moltin = new Moltin({publicId: 'xVyR52x8y0oSs9dovYyV6u0bjkr2kY4JNDFuqJdf'});
 
 moltin.Authenticate(function () {
-    
+
     // Make your calls here
-    
+
     var products = moltin.Product.List({status: 1, limit: 15, offset: 0});
     console.log(products);
-    
+
     var productsLength = products.length;
-    
+
     for (product in products.result) {
-                
-    } 
-    
+
+    }
+
     //CREATE A NEW PRODUCT
 
     productIdentifiers = ['467a74f51db771c2330e39120e7aa78d', '61b4949b31bd30937ff00a709b9e6137', '1d6e6ad5b00634363f9cba21ba40e062', '9acb7ee1c6c2633c3088b747eeb3cc60', 'c5da2b3c111fde819d83e3003f622c91', 'f94274ebdcdc04dd5ddd6df2b743d119', 'ac12364bc08b400434a3a24784ad5bd3', 'c637216a1a5c7758fb530d515dd58081', '3e90f859f1e29a84b00027c3189ad4ff', '76b9a550120cbce5056736e25093d48f', '89e1cc824d0b3ab4ea26e98174a202b0', '6ffbea19a38e0ee29d28d489a2653228', '58329e51c0b2b9309ea89659dae9657e' /*Cocobolo Pen Rollerball Pen */, 'b40b3f26a54bc3dc3f3cbbfcebab99b1' /* Cocobolo Pen Fountain Pen */,  ];
-    
+
     productIdentifiersbyId = {'979630404166222590': '467a74f51db771c2330e39120e7aa78d', '979628978958500605': '61b4949b31bd30937ff00a709b9e6137', '978111938779153002': '1d6e6ad5b00634363f9cba21ba40e062', '1004209930124657392': '9acb7ee1c6c2633c3088b747eeb3cc60', '1004211055238316785': 'c5da2b3c111fde819d83e3003f622c91', '1004212434551964402': 'f94274ebdcdc04dd5ddd6df2b743d119', '1004213533308617459': 'ac12364bc08b400434a3a24784ad5bd3', '1004215192541725428': 'c637216a1a5c7758fb530d515dd58081', '1013654408682012963': '3e90f859f1e29a84b00027c3189ad4ff', '1013657087768527142': '76b9a550120cbce5056736e25093d48f', '1013657894459015463': '89e1cc824d0b3ab4ea26e98174a202b0', '1037655368714420412':'6ffbea19a38e0ee29d28d489a2653228', '1058048826473972504' : '58329e51c0b2b9309ea89659dae9657e' /*Cocobolo Pen Rollerball Pen */, '1058049011820266266' : 'b40b3f26a54bc3dc3f3cbbfcebab99b1' /* Cocobolo Pen Fountain Pen */ };
-    
-    
+
+
     var productNumber = [];
     var productImages = []; // PRODUCT IMAGES -> ASIGNED TO AN ARRAY
     var productThumbnailImages = []; // PRODUCT IMAGES -> ASIGNED TO AN ARRAY FOR CART THUMBNAIL
     var amountOfProducts = productsLength;
     var counter = 0;
-    
+
     while (counter < amountOfProducts) {
-        
+
         productNumber.push(products[counter].id);
-        
+
         //PRODUCT IMAGES -> ASIGNED TO AN ARRAY //
-        productImages.push('http://'+products[counter].images[0].segments.domain+'w310/h220/fit/'+products[counter].images[0].segments.suffix);
+        productImages.push('http://'+products[counter].images[0].segments.domain+'w603/h428/fit/'+products[counter].images[0].segments.suffix); // w310/h220
         $('#product-img-'+counter).html("<img src='"+productImages[counter]+"' alt ='"+products[counter].title+"' class='image-center'>");
         $('#product-img-'+counter).css('padding-left: 20px;');
         $('#pn'+counter).text(products[counter].title);
         $('#pd'+counter).text(products[counter].description);
         $('#pp'+counter).text(products[counter].price.value);
-        
+
         // PRODUCT CART THUMBNAIL IMAGES -> ASIGNED TO AN ARRAY //
         productThumbnailImages.push('http://'+products[counter].images[0].segments.domain+'w50/h50/fit/'+products[counter].images[0].segments.suffix);
         counter += 1;
     }
-    
+
     // CUSTOM PEN ////////////////////////////////////////////////////////////////////////////////////////////
-    
+
     // PEN COST
     var costPenStyle = 0;
     var costWoodSelections = 0;
@@ -100,7 +100,7 @@ customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costI
             str += $( this ).text() + " ";
             modId = $(this)[0].id;
         });
- 
+
         switch (modId) {
         case 'ps-fp':
                 varPenStyle = '1037659350920855742';
@@ -119,12 +119,12 @@ customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costI
                 costPenStyle = 15;
                 break;
         }
-        
+
         customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costInlaySelections, costAttachmentsSelections, costBoxSelection);
 
     })
     .trigger( "change" );
-    
+
      // WOOD SELECTIONS
     var modWoodSelections = '1037708230735692012';
     var varWoodSelections = '';
@@ -137,7 +137,7 @@ customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costI
             str += $( this ).text() + " ";
             modId = $(this)[0].id;
         });
- 
+
         switch (modId) {
         case 'ws-pi':
                 varWoodSelections = '1037708639663554797';
@@ -184,12 +184,12 @@ customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costI
                 costWoodSelections = 50;
                 break;
         }
-        
+
         customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costInlaySelections, costAttachmentsSelections, costBoxSelection);
-        
+
     })
-    .trigger( "change" );   
-    
+    .trigger( "change" );
+
     // METAL SELECTIONS
     var modMetalSelections = '1037838642594185871';
     var varMetalSelections = '';
@@ -202,7 +202,7 @@ customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costI
             str += $( this ).text() + " ";
             modId = $(this)[0].id;
         });
- 
+
         switch (modId) {
         case 'ms-ss':
                 varMetalSelections = '1037838903437951632';
@@ -214,10 +214,10 @@ customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costI
                 break;
         }
         customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costInlaySelections, costAttachmentsSelections, costBoxSelection);
-        
+
     })
     .trigger( "change" );
-    
+
     // STONE / METAL INLEY SELECTIONS
     var modInlaySelections = '1037840893232546538';
     var varInlaySelections = '';
@@ -230,7 +230,7 @@ customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costI
             str += $( this ).text() + " ";
             modId = $(this)[0].id;
         });
- 
+
         switch (modId) {
         case 'is-bu':
                 varInlaySelections = '1037841302789554923';
@@ -248,7 +248,7 @@ customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costI
         customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costInlaySelections, costAttachmentsSelections, costBoxSelection);
     })
     .trigger( "change" );
-    
+
     // ATTACHEMNT SELECTIONS
     var modAttachmentsSelections = '1037845953635156050';
     var varAttachmentsSelections = '';
@@ -261,7 +261,7 @@ customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costI
             str += $( this ).text() + " ";
             modId = $(this)[0].id;
         });
- 
+
         switch (modId) {
         case 'as-ts':
                 varAttachmentsSelections = '1037846724942495827';
@@ -275,7 +275,7 @@ customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costI
         customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costInlaySelections, costAttachmentsSelections, costBoxSelection);
     })
     .trigger( "change" );
-    
+
     //  BOX SELECTION
     var modBoxSelection = '1037850303640109495';
     var varBoxSelection = '';
@@ -288,7 +288,7 @@ customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costI
             str += $( this ).text() + " ";
             modId = $(this)[0].id;
         });
- 
+
         switch (modId) {
         case 'bs-en':
                 varBoxSelection = '1037852112492429760';
@@ -302,14 +302,14 @@ customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costI
         customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costInlaySelections, costAttachmentsSelections, costBoxSelection);
     })
     .trigger( "change" );
-    
+
 
 
     ////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////
-    
+
     // PRODUCT 9: FOUNTAIN AND ROLLERBALL PEN /////////////////////////////////////////////////////////////
-    
+
     /*
     // PEN COST
     var costPenStyle9 = products[9].price.value;
@@ -325,7 +325,7 @@ customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costI
 
     customPenCostModify9(costPenStyle9);
 
-    // PEN STYLES 
+    // PEN STYLES
     var modPenStyle9 = '1058046723055682321';
     var varPenStyle9 = '';
 
@@ -337,7 +337,7 @@ customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costI
             str += $( this ).text() + " ";
             modId = $(this)[0].id;
         });
- 
+
         switch (modId) {
         case 'ps-fp-9':
                 varPenStyle9 = '1058047617650393900';
@@ -348,15 +348,15 @@ customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costI
                 costPenStyle9 = 330;
                 break;
         }
-        
+
         customPenCostModify9(costPenStyle9);
 
     })
     .trigger( "change" );
-    
-    
+
+
     // PRODUCT 11: FOUNTAIN AND ROLLERBALL PEN /////////////////////////////////////////////////////////////
-    
+
     // PEN COST
     var costPenStyle11 = products[11].price.value;
 
@@ -369,7 +369,7 @@ customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costI
 
     customPenCostModify11(costPenStyle11);
 
-    // PEN STYLES 
+    // PEN STYLES
     var modPenStyle11 = '1058048657602904854';
     var varPenStyle11 = '';
 
@@ -381,7 +381,7 @@ customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costI
             str += $( this ).text() + " ";
             modId = $(this)[0].id;
         });
- 
+
         switch (modId) {
         case 'ps-fp-11':
                 varPenStyle11 = '1058049010704581400';
@@ -392,37 +392,37 @@ customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costI
                 costPenStyle11 = 66;
                 break;
         }
-        
+
         customPenCostModify11(costPenStyle11);
 
     })
     .trigger( "change" );
-    
-    
+
+
     */
-    
+
     ////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////
-    
+
 
     var cartItems = moltin.Cart.Contents();
-    
+
     var  cartAllTotalItemsAtLoad = cartItems.total_items;
     var  cartTotalItemsAtLoad = cartItems.total_unique_items;
     $("#cart-counter").text(cartAllTotalItemsAtLoad);
-    
+
     var timesCartOpened = 0;
-    
-    
+
+
     $("#header-cart").click(function() {
         $("#cart").show();
 
         cartItems = moltin.Cart.Contents();
-        
+
         cartCounter = cartItems.total_unique_items;
 
         // HIDE OR SHOW "CART EMPTY" PLACEHOLDER
@@ -433,11 +433,11 @@ customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costI
             $("#cart-empty").hide();
             console.log("I'm not empty (1)");
         }
-        
-        
+
+
 
         // POPULATE CART WITH PRE-EXISTIN ITEMS IN CART //
-        
+
         if(timesCartOpened < 1) {
             if (cartTotalItemsAtLoad == 0) {
                     timesCartOpened +=1; // COUNT THE AMOUT OF TIMES THE CART HAS BEEN OPENED
@@ -450,7 +450,7 @@ customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costI
                     var selectThisProductLoad;
                     var loadItemVerify;
                     var productCartToLoop = cartItemsAtLoad;
-                    
+
                     while (counter2 < amountOfProducts) {
                         var productSlugLoad = products[counter2].slug;
                         var productIdentifierSelectLoad = productSlugLoad - 1;
@@ -489,7 +489,7 @@ customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costI
                                     .append($('<td id="productInfoTotal-'+productNumber[counter2]+'" class="input-table-style">')
                                             .text(productInfoTotalLoad)
                                     )
-                                ); 
+                                );
                         }
 
                         console.log(counter2);
@@ -499,17 +499,17 @@ customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costI
 
                       // UPDATE ITEM QUANTITY IN CART BASED ON NUMBER TYPED IN ITEMS'S INPUT FIELD IN CART //
                     $("#cart-product-table :input").keyup(function() {
-                        
+
                         var newInputTypeValue = $(this).val(); // STORE NUMBER TYPED IN INPUT VALUE FOR QUANTITY IN CART
                         var itemNameId = $(this).attr('id'); // SELECT HTML ID FOR INPUT
                         var inputQuantityId = itemNameId.split("-").pop(); // SELECT ITEM MOTLIN ID
 
 
-                        
+
                         counter3 = 0;
                         while (counter3 < amountOfProducts) {
                             var productIdLoadType = products[counter3].id; //
-                            
+
                             if (productIdLoadType == inputQuantityId) {
                                 var productSlugLoadType = products[counter3].slug;
                                 var productIdentifierSelectLoadType = productSlugLoadType - 1;
@@ -526,20 +526,20 @@ customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costI
                                 quantity: newInputTypeValue
 
                             }, function(item) {
-                                console.log(item);     
+                                console.log(item);
 
                                 // RETRIEVE CART INFO AGAIN FROM MOLTIN
                                 cartItems = moltin.Cart.Contents();
 
                                 console.log("------------------- 3 SELECT CART IDENTIFIER BY ID -------------------");
                                 var selectCartIdentifierById = productIdentifiersbyId[inputQuantityId];
-                                productInfoLoad = cartItems.contents[selectCartIdentifierById];//item;              
+                                productInfoLoad = cartItems.contents[selectCartIdentifierById];//item;
                                 // UPDATE PRICE AND TOTAL FOR EACH PRODUCT VARIABLE
                                 productInfoPriceLoad = productInfoLoad.pricing.formatted.with_tax;
                                 productInfoTotalLoad = productInfoLoad.totals.post_discount.formatted.with_tax;
 
                                 // UPDATE VISUAL INFO IN CART OF PRICE AND TOTAL AMOUT PER ITEM
-                                $("#productInfoPrice-"+inputQuantityId).text(productInfoPriceLoad); 
+                                $("#productInfoPrice-"+inputQuantityId).text(productInfoPriceLoad);
                                 $("#productInfoTotal-"+inputQuantityId).text(productInfoTotalLoad);
 
                                 cartSubtotal = cartItems.totals.post_discount.formatted.without_tax;
@@ -551,7 +551,7 @@ customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costI
                                 // UPDATE AMOUNT OF ITEMS IN CART
                                 cartCounter = cartItems.total_items;
                                 $("#cart-counter").text(cartCounter);
-                                
+
 
                                 if (cartCounter == 0){
                                     $("#cart-empty").show();
@@ -596,8 +596,8 @@ customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costI
                                     $("#cart-empty").show();
                                 } else {
                                     $("#cart-empty").hide();
-                                }  
-                                
+                                }
+
                             }, function(error) {
                                 // Something went wrong...
                                 alert("Something went wrong");
@@ -609,14 +609,14 @@ customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costI
                             console.log(newInputTypeValue);
                         }
                     });
-                }   
+                }
         } else {
             console.log("else")
         }
     });
-    
-    
-    
+
+
+
 /////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -625,7 +625,7 @@ customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costI
 
     // CLICK ON ADD ITEM TO CART BUTTON //
     $(document).on('click', '.add-to-cart', function() {
-        
+
     if(timesCartOpened < 1) {
         if (cartTotalItemsAtLoad == 0) {
                 timesCartOpened +=1; // COUNT THE AMOUT OF TIMES THE CART HAS BEEN OPENED
@@ -680,7 +680,7 @@ customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costI
                                 .append($('<td id="productInfoTotal-'+productNumber[counter2]+'" class="input-table-style">')
                                         .text(productInfoTotalLoad)
                                 )
-                            ); 
+                            );
                     }
 
                     console.log(counter2);
@@ -715,12 +715,12 @@ customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costI
                             quantity: newInputTypeValue
 
                         }, function(item) {
-                            console.log(item);     
+                            console.log(item);
 
                             // RETRIEVE CART INFO AGAIN FROM MOLTIN
                             cartItems = moltin.Cart.Contents();
 
-                            // UPDATE PRICE AND TOTAL FOR EACH PRODUCT VARIABLE 
+                            // UPDATE PRICE AND TOTAL FOR EACH PRODUCT VARIABLE
                             console.log("------------------- 3 SELECT CART IDENTIFIER BY ID -------------------");
                             var selectCartIdentifierById = productIdentifiersbyId[inputQuantityId];
                             productInfoLoad = cartItems.contents[selectCartIdentifierById];//item;
@@ -730,7 +730,7 @@ customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costI
                             productInfoTotalLoad = productInfoLoad.totals.post_discount.formatted.with_tax;
 
                             // UPDATE VISUAL INFO IN CART OF PRICE AND TOTAL AMOUT PER ITEM
-                            $("#productInfoPrice-"+inputQuantityId).text(productInfoPriceLoad); 
+                            $("#productInfoPrice-"+inputQuantityId).text(productInfoPriceLoad);
                             $("#productInfoTotal-"+inputQuantityId).text(productInfoTotalLoad);
 
 
@@ -790,7 +790,7 @@ customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costI
                                 $("#cart-empty").show();
                             } else {
                                 $("#cart-empty").hide();
-                            }  
+                            }
 
                         }, function(error) {
                             // Something went wrong...
@@ -803,7 +803,7 @@ customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costI
                         console.log(newInputTypeValue);
                     }
                 });
-            }   
+            }
     } else {
         console.log("---------------------else----------------------------")
     }
@@ -815,13 +815,13 @@ customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costI
         var selectItemValue = $(this).attr('value')-1;
         console.log("-----------select item value ------------");
         console.log(selectItemValue);
-        
+
 
         // SELECT ITEM QUANTITY
         var addToCartQuantity = $(this).siblings().children("input").val();
         var insert;
-        
-        
+
+
         if(selectItemValue === 0) {
             // ADD TO CART CUSTOM PEN
             var insertCustom = moltin.Cart.Insert(products[selectItemValue].id, addToCartQuantity, {modPenStyle: varPenStyle, modWoodSelections: varWoodSelections, modMetalSelections: varMetalSelections, modInlaySelections: varInlaySelections, modAttachmentsSelections: varAttachmentsSelections, modBoxSelection: varBoxSelection});
@@ -832,10 +832,10 @@ customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costI
             } else {
                 // Something went wrong...
             }
-            
+
         } /*
-        else if (selectItemValue === 11){ 
-            var insertVariations11 = moltin.Cart.Insert(products[selectItemValue].id, addToCartQuantity, {modPenStyle11: varPenStyle11});  
+        else if (selectItemValue === 11){
+            var insertVariations11 = moltin.Cart.Insert(products[selectItemValue].id, addToCartQuantity, {modPenStyle11: varPenStyle11});
             console.log("----------- insertVariations11 ------------");
             console.log(addToCartQuantity);
             console.log(modPenStyle11);
@@ -847,9 +847,9 @@ customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costI
                 // Something went wrong...]
                 console.log("Something went wrong insertVariations11");
             }
-            
-        } else if (selectItemValue === 9){ 
-            var insertVariations9 = moltin.Cart.Insert(products[selectItemValue].id, addToCartQuantity, {modPenStyle9: varPenStyle9}); 
+
+        } else if (selectItemValue === 9){
+            var insertVariations9 = moltin.Cart.Insert(products[selectItemValue].id, addToCartQuantity, {modPenStyle9: varPenStyle9});
             console.log("----------- insertVariations9 ------------");
             if ( insertVariations9.status === true ) {
                 //////// INSERT ITEM IN CART  ////////
@@ -858,7 +858,7 @@ customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costI
                 // Something went wrong...
                 console.log("Something went wrong insertVariations9");
             }
-              
+
         } */
         else {
             //////// INSERT ITEM IN CART  ////////
@@ -876,15 +876,15 @@ customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costI
             console.log(insert);
 
         };
-        
-        
-        var cart = moltin.Cart.Contents();  
+
+
+        var cart = moltin.Cart.Contents();
 
         //////// CART COUNTER ////////
         cartCounter = cart.total_unique_items;
         var cartAllCounter = cart.total_items;
         $("#cart-counter").text(cartAllCounter);
-        
+
 
         /////// CART INSERT INFO /////////
         var productSlug = products[selectItemValue].slug;
@@ -903,7 +903,7 @@ customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costI
         var isTrThere = $("#product-"+productNumber[selectItemValue]);
 
         // ADD A NEW TABLE ROW WHEN THE ITEM HAS NOT BEEN ADDED TO THE CART //
-        if (!isTrThere[0]) { 
+        if (!isTrThere[0]) {
 
             $("#cart-product-table").find('tbody')
                 .append($('<tr id="product-'+productNumber[selectItemValue]+'">')
@@ -928,7 +928,7 @@ customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costI
             else { // IF THE ITEM HAS BEEN ADDED TO THE CART, THEN UPDATE THE VALUE
 
                 // SELECT THE TABLE CELL AND REPLACE IT WITH THE NEW VALUE //
-                
+
                 productInfoQuantity = productInfo.quantity;
 
                 $("#productInfoQuantity-"+productNumber[selectItemValue]).val(productInfoQuantity); // UPDATE PRODUCT QUANTITY
@@ -969,7 +969,7 @@ customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costI
                     productInfoTotal = productInfo.totals.post_discount.formatted.with_tax;
 
                     // UPDATE VISUAL INFO IN CART OF PRICE AND TOTAL AMOUT PER ITEM
-                    $("#productInfoPrice-"+productNumber[selectItemValue]).text(productInfoPrice); 
+                    $("#productInfoPrice-"+productNumber[selectItemValue]).text(productInfoPrice);
                     $("#productInfoTotal-"+productNumber[selectItemValue]).text(productInfoTotal);
 
                     cartSubtotal = cart.totals.post_discount.formatted.without_tax;
@@ -1025,7 +1025,7 @@ customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costI
                         $("#cart-empty").show();
                     } else {
                         $("#cart-empty").hide();
-                    }  
+                    }
 
 
                 }, function(error) {
@@ -1041,12 +1041,12 @@ customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costI
 
 
 
-        });       
+        });
 
     });
 
 
-        
+
 
     $("#cart-next").click(function() {
         $("#shipping").delay(100).show();
@@ -1054,7 +1054,7 @@ customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costI
     });
 
 
-    
+
     //////// VALIDATE IF FORM IS FULL//////////
 
    function checkInput() {
@@ -1093,7 +1093,7 @@ customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costI
    //////// BILLING VALIDATE IF FORM IS FULL //////////
 
    function billingCheckInput() {
-    
+
     var billingInvalid=false;
 
     if ($("#billing-first_name").val() == "" ) {
@@ -1125,14 +1125,14 @@ customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costI
     return billingInvalid;
 
 }
-    
-    
+
+
     //////// SHIPPING ////////
-    
+
     $("#shipping-next").click(function() {
-        
-        
-        
+
+
+
         var invalid;
         invalid= checkInput();
 
@@ -1147,8 +1147,8 @@ customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costI
             var country_var = $("#country").val();
             var post_code_var = $("#post_code").val();
             var phone_var = $("#phone").val();
-            
- 
+
+
             if ($('#shipping-form :checkbox').is(':checked')) {
 
                 // SEND USER TO THE CHECKOUT STEP PAGE
@@ -1177,9 +1177,9 @@ customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costI
                     });
 
                     console.log(order);
-                        
+
                     //////// PAYMENT ////////
-                        
+
                     var cardNumber = $("#card-number").val();
                     var expiryMonth = $("#expiry-month").val();
                     var expiryYear = $("#expiryYear").val();
@@ -1198,10 +1198,10 @@ customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costI
 
                     $("#purchase-summary").delay(100).show();
                     $("#checkout").hide();
-                    
+
                     //////// PURCHASE SUMMARY ///////
-                
-                    
+
+
                         var purchaseSummaryProductsAll = moltin.Cart.Contents().contents;
 
                         if (purchaseSummaryProductsAll['467a74f51db771c2330e39120e7aa78d']){
@@ -1210,13 +1210,13 @@ customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costI
                             $('#purchase-summary-product1').html(purchaseSummaryProduct1);
                             var purchaseSummaryProduct1Quantity = purchaseSummaryProductsAll['467a74f51db771c2330e39120e7aa78d'].quantity;
                             $('#purchase-summary-product1-quantity').html(purchaseSummaryProduct1Quantity);
-                            
+
                         }
 
                         if (purchaseSummaryProductsAll['61b4949b31bd30937ff00a709b9e6137']){
                             var purchaseSummaryProduct2 = purchaseSummaryProductsAll['61b4949b31bd30937ff00a709b9e6137'].name;
                             console.log(purchaseSummaryProduct2);
-                            $('#purchase-summary-product2').html(purchaseSummaryProduct2);   
+                            $('#purchase-summary-product2').html(purchaseSummaryProduct2);
                             var purchaseSummaryProduct2Quantity = purchaseSummaryProductsAll['61b4949b31bd30937ff00a709b9e6137'].quantity;
                             $('#purchase-summary-product2-quantity').html(purchaseSummaryProduct2Quantity);
                         }
@@ -1224,7 +1224,7 @@ customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costI
                         if (purchaseSummaryProductsAll['1d6e6ad5b00634363f9cba21ba40e062']){
                             var purchaseSummaryProduct3 = purchaseSummaryProductsAll['1d6e6ad5b00634363f9cba21ba40e062'].name;
                             console.log(purchaseSummaryProduct3);
-                            $('#purchase-summary-product3').html(purchaseSummaryProduct3);  
+                            $('#purchase-summary-product3').html(purchaseSummaryProduct3);
                             var purchaseSummaryProduct3Quantity = purchaseSummaryProductsAll['1d6e6ad5b00634363f9cba21ba40e062'].quantity;
                             $('#purchase-summary-product3-quantity').html(purchaseSummaryProduct3Quantity);
                         }
@@ -1232,7 +1232,7 @@ customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costI
                         if (purchaseSummaryProductsAll['9acb7ee1c6c2633c3088b747eeb3cc60']){
                             var purchaseSummaryProduct4 = purchaseSummaryProductsAll['9acb7ee1c6c2633c3088b747eeb3cc60'].name;
                             console.log(purchaseSummaryProduct4);
-                            $('#purchase-summary-product4').html(purchaseSummaryProduct4); 
+                            $('#purchase-summary-product4').html(purchaseSummaryProduct4);
                             var purchaseSummaryProduct4Quantity = purchaseSummaryProductsAll['9acb7ee1c6c2633c3088b747eeb3cc60'].quantity;
                             $('#purchase-summary-product4-quantity').html(purchaseSummaryProduct4Quantity);
                         }
@@ -1241,7 +1241,7 @@ customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costI
                             var purchaseSummaryProduct5 = purchaseSummaryProductsAll['c5da2b3c111fde819d83e3003f622c91'].name;
                             console.log("purchaseSummaryProduct5: ");
                             console.log(purchaseSummaryProduct5);
-                            $('#purchase-summary-product5').html(purchaseSummaryProduct5);   
+                            $('#purchase-summary-product5').html(purchaseSummaryProduct5);
                             var purchaseSummaryProduct5Quantity = purchaseSummaryProductsAll['c5da2b3c111fde819d83e3003f622c91'].quantity;
                             $('#purchase-summary-product5-quantity').html(purchaseSummaryProduct5Quantity);
                         }
@@ -1249,7 +1249,7 @@ customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costI
                         if (purchaseSummaryProductsAll['f94274ebdcdc04dd5ddd6df2b743d119']){
                             var purchaseSummaryProduct6 = purchaseSummaryProductsAll['f94274ebdcdc04dd5ddd6df2b743d119'].name;
                             console.log(purchaseSummaryProduct6);
-                            $('#purchase-summary-product6').html(purchaseSummaryProduct6); 
+                            $('#purchase-summary-product6').html(purchaseSummaryProduct6);
                             var purchaseSummaryProduct6Quantity = purchaseSummaryProductsAll['f94274ebdcdc04dd5ddd6df2b743d119'].quantity;
                             $('#purchase-summary-product6-quantity').html(purchaseSummaryProduct6Quantity);
                         }
@@ -1258,7 +1258,7 @@ customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costI
                             var purchaseSummaryProduct7 = purchaseSummaryProductsAll['ac12364bc08b400434a3a24784ad5bd3'].name;
                             console.log("purchaseSummaryProduct7: ");
                             console.log(purchaseSummaryProduct7);
-                            $('#purchase-summary-product7').html(purchaseSummaryProduct7);   
+                            $('#purchase-summary-product7').html(purchaseSummaryProduct7);
                             var purchaseSummaryProduct7Quantity = purchaseSummaryProductsAll['ac12364bc08b400434a3a24784ad5bd3'].quantity;
                             $('#purchase-summary-product7-quantity').html(purchaseSummaryProduct7Quantity);
                         }
@@ -1275,7 +1275,7 @@ customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costI
                             var purchaseSummaryProduct9 = purchaseSummaryProductsAll['3e90f859f1e29a84b00027c3189ad4ff'].name;
                             console.log("purchaseSummaryProduct9: ");
                             console.log(purchaseSummaryProduct9);
-                            $('#purchase-summary-product9').html(purchaseSummaryProduct9);  
+                            $('#purchase-summary-product9').html(purchaseSummaryProduct9);
                             var purchaseSummaryProduct9Quantity = purchaseSummaryProductsAll['3e90f859f1e29a84b00027c3189ad4ff'].quantity;
                             $('#purchase-summary-product9-quantity').html(purchaseSummaryProduct9Quantity);
                         }
@@ -1283,7 +1283,7 @@ customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costI
                         if (purchaseSummaryProductsAll['76b9a550120cbce5056736e25093d48f']){
                             var purchaseSummaryProduct10 = purchaseSummaryProductsAll['76b9a550120cbce5056736e25093d48f'].name;
                             console.log(purchaseSummaryProduct10);
-                            $('#purchase-summary-product10').html(purchaseSummaryProduct10);   
+                            $('#purchase-summary-product10').html(purchaseSummaryProduct10);
                             var purchaseSummaryProduct10Quantity = purchaseSummaryProductsAll['76b9a550120cbce5056736e25093d48f'].quantity;
                             $('#purchase-summary-product10-quantity').html(purchaseSummaryProduct10Quantity);
                         }
@@ -1291,7 +1291,7 @@ customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costI
                         if (purchaseSummaryProductsAll['89e1cc824d0b3ab4ea26e98174a202b0']){
                             var purchaseSummaryProduct11 = purchaseSummaryProductsAll['89e1cc824d0b3ab4ea26e98174a202b0'].name;
                             console.log(purchaseSummaryProduct11);
-                            $('#purchase-summary-product11').html(purchaseSummaryProduct11); 
+                            $('#purchase-summary-product11').html(purchaseSummaryProduct11);
                             var purchaseSummaryProduct11Quantity = purchaseSummaryProductsAll['89e1cc824d0b3ab4ea26e98174a202b0'].quantity;
                             $('#purchase-summary-product11-quantity').html(purchaseSummaryProduct11Quantity);
                         }
@@ -1299,23 +1299,23 @@ customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costI
                         if (purchaseSummaryProductsAll['6ffbea19a38e0ee29d28d489a2653228']){
                             var purchaseSummaryProduct11 = purchaseSummaryProductsAll['6ffbea19a38e0ee29d28d489a2653228'].name;
                             console.log(purchaseSummaryProduct11);
-                            $('#purchase-summary-product12').html(purchaseSummaryProduct11); 
+                            $('#purchase-summary-product12').html(purchaseSummaryProduct11);
                             var purchaseSummaryProduct12Quantity = purchaseSummaryProductsAll['6ffbea19a38e0ee29d28d489a2653228'].quantity;
                             $('#purchase-summary-product12-quantity').html(purchaseSummaryProduct12Quantity);
                         }
-                        
+
                     var purchaseSummaryMessage = checkout.message;
                     var purchaseSummaryReference = checkout.reference;
 
                     $('#purchase-summary-message').html(purchaseSummaryMessage);
                     $('#purchase-summary-reference').html(purchaseSummaryReference);
-                    
+
                     var purchaseSummaryTotal = checkout.order.total;
                     var purchaseSummaryCurrency = checkout.order.currency_code;
-                    
+
                     $('#purchase-summary-total').html(purchaseSummaryTotal);
                     $('#purchase-summary-currency').html(purchaseSummaryCurrency);
-                    
+
                     var purchaseSummaryBillingAddress1 = checkout.order.bill_to.data.address_1;
                     var purchaseSummaryBillingAddress2 = checkout.order.bill_to.data.address_2;
                     var purchaseSummaryBillingCity = checkout.order.bill_to.data.city;
@@ -1325,8 +1325,8 @@ customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costI
                     var purchaseSummaryBillingFirstname = checkout.order.bill_to.data.first_name;
                     var purchaseSummaryBillingLastname = checkout.order.bill_to.data.last_name;
                     var purchaseSummaryBillingPhone = checkout.order.bill_to.data.phone;
-                    
-                    
+
+
                     $('#purchase-summary-billing-address1').html(purchaseSummaryBillingAddress1);
                     $('#purchase-summary-billing-address2').html(purchaseSummaryBillingAddress2);
                     $('#purchase-summary-billing-city').html(purchaseSummaryBillingCity);
@@ -1336,7 +1336,7 @@ customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costI
                     $('#purchase-summary-billing-firstname').html(purchaseSummaryBillingFirstname);
                     $('#purchase-summary-billing-lastname').html(purchaseSummaryBillingLastname);
                     $('#purchase-summary-billing-phone').html(purchaseSummaryBillingPhone);
-                    
+
                     var purchaseSummaryShippingAddress1 = checkout.order.ship_to.data.address_1;
                     var purchaseSummaryShippingAddress2 = checkout.order.ship_to.data.address_2;
                     var purchaseSummaryShippingCity = checkout.order.ship_to.data.city;
@@ -1346,7 +1346,7 @@ customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costI
                     var purchaseSummaryShippingFirstname = checkout.order.ship_to.data.first_name;
                     var purchaseSummaryShippingLastname = checkout.order.ship_to.data.last_name;
                     var purchaseSummaryShippingPhone = checkout.order.ship_to.data.phone;
-                    
+
                     $('#purchase-summary-shipping-address1').html(purchaseSummaryShippingAddress1);
                     $('#purchase-summary-shipping-address2').html(purchaseSummaryShippingAddress2);
                     $('#purchase-summary-shipping-city').html(purchaseSummaryShippingCity);
@@ -1361,15 +1361,15 @@ customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costI
 
             } else {
 
-                //////// BILLING //////// 
-                                  
+                //////// BILLING ////////
+
                 $("#billing-next").click(function() {
-                    
+
                     console.log("billing-next clicked");
-                    
+
                     var billingInvalid;
                     billingInvalid= billingCheckInput();
-                    
+
 
                     if (billingInvalid==false) {
 
@@ -1382,20 +1382,20 @@ customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costI
                         var billingCountry_var = $("#billing-country").val();
                         var billingPost_code_var = $("#billing-post_code").val();
                         var billingPhone_var = $("#billing-phone").val();
-                        
+
                         // SEND USER TO THE CHECKOUT STEP PAGE
                         $("#checkout").delay(100).show();
-                        $("#billing").hide();           
+                        $("#billing").hide();
 
-                        
+
                     } else {
                         $("#billing-alert").fadeIn().delay(2000).fadeOut();
                     }
 
                     console.log(billingName, billingLastName, billingAddress01, billingAddress02, billingCity_var, billingCounty_var, billingCountry_var, billingPost_code_var, billingPhone_var);
-                        
-                
-                
+
+
+
                     //////// CHECKOUT ///////
 
                     $("#finish-checkout").click(function() {
@@ -1429,9 +1429,9 @@ customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costI
                         });
 
                         console.log(order);
-                            
+
                         //////// PAYMENT ////////
-                            
+
                         var cardNumber = $("#card-number").val();
                         var expiryMonth = $("#expiry-month").val();
                         var expiryYear = $("#expiryYear").val();
@@ -1439,7 +1439,7 @@ customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costI
 
                         var checkout = moltin.Checkout.Payment('purchase', order.id, {
                             data: {
-                                number:       cardNumber, // 4242424242424242 
+                                number:       cardNumber, // 4242424242424242
                                 expiry_month: expiryMonth, // 02
                                 expiry_year:  expiryYear, // 2017
                                 cvv:          cardCvv // 123
@@ -1449,8 +1449,8 @@ customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costI
                         console.log(checkout);
 
                         $("#purchase-summary").delay(100).show();
-                        $("#checkout").hide();  
-                        
+                        $("#checkout").hide();
+
                         //////// PURCHASE SUMMARY ///////
 
                         var purchaseSummaryProductsAll = moltin.Cart.Contents().contents;
@@ -1462,14 +1462,14 @@ customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costI
                             $('#purchase-summary-product1').html(purchaseSummaryProduct1);
                             var purchaseSummaryProduct1Quantity = purchaseSummaryProductsAll['467a74f51db771c2330e39120e7aa78d'].quantity;
                             $('#purchase-summary-product1-quantity').html(purchaseSummaryProduct1Quantity);
-                            
+
                         }
 
                         if (purchaseSummaryProductsAll['61b4949b31bd30937ff00a709b9e6137']){
                             var purchaseSummaryProduct2 = purchaseSummaryProductsAll['61b4949b31bd30937ff00a709b9e6137'].name;
                             console.log("purchaseSummaryProduct2: ");
                             console.log(purchaseSummaryProduct2);
-                            $('#purchase-summary-product2').html(purchaseSummaryProduct2);   
+                            $('#purchase-summary-product2').html(purchaseSummaryProduct2);
                             var purchaseSummaryProduct2Quantity = purchaseSummaryProductsAll['61b4949b31bd30937ff00a709b9e6137'].quantity;
                             $('#purchase-summary-product2-quantity').html(purchaseSummaryProduct2Quantity);
                         }
@@ -1478,7 +1478,7 @@ customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costI
                             var purchaseSummaryProduct3 = purchaseSummaryProductsAll['1d6e6ad5b00634363f9cba21ba40e062'].name;
                             console.log("purchaseSummaryProduct3: ");
                             console.log(purchaseSummaryProduct3);
-                            $('#purchase-summary-product3').html(purchaseSummaryProduct3);  
+                            $('#purchase-summary-product3').html(purchaseSummaryProduct3);
                             var purchaseSummaryProduct3Quantity = purchaseSummaryProductsAll['1d6e6ad5b00634363f9cba21ba40e062'].quantity;
                             $('#purchase-summary-product3-quantity').html(purchaseSummaryProduct3Quantity);
                         }
@@ -1487,7 +1487,7 @@ customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costI
                             var purchaseSummaryProduct4 = purchaseSummaryProductsAll['9acb7ee1c6c2633c3088b747eeb3cc60'].name;
                             console.log("purchaseSummaryProduct4: ");
                             console.log(purchaseSummaryProduct4);
-                            $('#purchase-summary-product4').html(purchaseSummaryProduct4); 
+                            $('#purchase-summary-product4').html(purchaseSummaryProduct4);
                             var purchaseSummaryProduct4Quantity = purchaseSummaryProductsAll['9acb7ee1c6c2633c3088b747eeb3cc60'].quantity;
                             $('#purchase-summary-product4-quantity').html(purchaseSummaryProduct4Quantity);
                         }
@@ -1496,7 +1496,7 @@ customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costI
                             var purchaseSummaryProduct5 = purchaseSummaryProductsAll['c5da2b3c111fde819d83e3003f622c91'].name;
                             console.log("purchaseSummaryProduct5: ");
                             console.log(purchaseSummaryProduct5);
-                            $('#purchase-summary-product5').html(purchaseSummaryProduct5);   
+                            $('#purchase-summary-product5').html(purchaseSummaryProduct5);
                             var purchaseSummaryProduct5Quantity = purchaseSummaryProductsAll['c5da2b3c111fde819d83e3003f622c91'].quantity;
                             $('#purchase-summary-product5-quantity').html(purchaseSummaryProduct5Quantity);
                         }
@@ -1505,7 +1505,7 @@ customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costI
                             var purchaseSummaryProduct6 = purchaseSummaryProductsAll['f94274ebdcdc04dd5ddd6df2b743d119'].name;
                             console.log("purchaseSummaryProduct6: ");
                             console.log(purchaseSummaryProduct6);
-                            $('#purchase-summary-product6').html(purchaseSummaryProduct6); 
+                            $('#purchase-summary-product6').html(purchaseSummaryProduct6);
                             var purchaseSummaryProduct6Quantity = purchaseSummaryProductsAll['f94274ebdcdc04dd5ddd6df2b743d119'].quantity;
                             $('#purchase-summary-product6-quantity').html(purchaseSummaryProduct6Quantity);
                         }
@@ -1514,7 +1514,7 @@ customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costI
                             var purchaseSummaryProduct7 = purchaseSummaryProductsAll['ac12364bc08b400434a3a24784ad5bd3'].name;
                             console.log("purchaseSummaryProduct7: ");
                             console.log(purchaseSummaryProduct7);
-                            $('#purchase-summary-product7').html(purchaseSummaryProduct7);   
+                            $('#purchase-summary-product7').html(purchaseSummaryProduct7);
                             var purchaseSummaryProduct7Quantity = purchaseSummaryProductsAll['ac12364bc08b400434a3a24784ad5bd3'].quantity;
                             $('#purchase-summary-product7-quantity').html(purchaseSummaryProduct7Quantity);
                         }
@@ -1532,7 +1532,7 @@ customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costI
                             var purchaseSummaryProduct9 = purchaseSummaryProductsAll['3e90f859f1e29a84b00027c3189ad4ff'].name;
                             console.log("purchaseSummaryProduct9: ");
                             console.log(purchaseSummaryProduct9);
-                            $('#purchase-summary-product9').html(purchaseSummaryProduct9);  
+                            $('#purchase-summary-product9').html(purchaseSummaryProduct9);
                             var purchaseSummaryProduct9Quantity = purchaseSummaryProductsAll['3e90f859f1e29a84b00027c3189ad4ff'].quantity;
                             $('#purchase-summary-product9-quantity').html(purchaseSummaryProduct9Quantity);
                         }
@@ -1541,7 +1541,7 @@ customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costI
                             var purchaseSummaryProduct10 = purchaseSummaryProductsAll['76b9a550120cbce5056736e25093d48f'].name;
                             console.log("purchaseSummaryProduct10: ");
                             console.log(purchaseSummaryProduct10);
-                            $('#purchase-summary-product10').html(purchaseSummaryProduct10);   
+                            $('#purchase-summary-product10').html(purchaseSummaryProduct10);
                             var purchaseSummaryProduct10Quantity = purchaseSummaryProductsAll['76b9a550120cbce5056736e25093d48f'].quantity;
                             $('#purchase-summary-product10-quantity').html(purchaseSummaryProduct10Quantity);
                         }
@@ -1550,7 +1550,7 @@ customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costI
                             var purchaseSummaryProduct11 = purchaseSummaryProductsAll['89e1cc824d0b3ab4ea26e98174a202b0'].name;
                             console.log("purchaseSummaryProduct11: ");
                             console.log(purchaseSummaryProduct11);
-                            $('#purchase-summary-product11').html(purchaseSummaryProduct11); 
+                            $('#purchase-summary-product11').html(purchaseSummaryProduct11);
                             var purchaseSummaryProduct11Quantity = purchaseSummaryProductsAll['89e1cc824d0b3ab4ea26e98174a202b0'].quantity;
                             $('#purchase-summary-product11-quantity').html(purchaseSummaryProduct11Quantity);
                         }
@@ -1559,11 +1559,11 @@ customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costI
                             var purchaseSummaryProduct11 = purchaseSummaryProductsAll['6ffbea19a38e0ee29d28d489a2653228'].name;
                             console.log("purchaseSummaryProduct11: ");
                             console.log(purchaseSummaryProduct11);
-                            $('#purchase-summary-product12').html(purchaseSummaryProduct11); 
+                            $('#purchase-summary-product12').html(purchaseSummaryProduct11);
                             var purchaseSummaryProduct12Quantity = purchaseSummaryProductsAll['6ffbea19a38e0ee29d28d489a2653228'].quantity;
                             $('#purchase-summary-product12-quantity').html(purchaseSummaryProduct12Quantity);
                         }
-                        
+
                         var purchaseSummaryMessage = checkout.message;
                         var purchaseSummaryReference = checkout.reference;
 
@@ -1616,52 +1616,52 @@ customPenCostModify(costPenStyle, costWoodSelections, costMetalSelections, costI
                         $('#purchase-summary-shipping-firstname').html(purchaseSummaryShippingFirstname);
                         $('#purchase-summary-shipping-lastname').html(purchaseSummaryShippingLastname);
                         $('#purchase-summary-shipping-phone').html(purchaseSummaryShippingPhone);
-                        
-                    }); 
 
-                }); 
+                    });
+
+                });
 
 
                 $("#billing").delay(100).show();
                 $("#shipping").hide();
             }
 
-            
+
         } else {
             $("#shipping-alert").fadeIn().delay(2000).fadeOut();
         }
 
         console.log(name, lastName, address01, address02, city_var, county_var, country_var, post_code_var, phone_var);
-    
-        
-
-        
 
 
-    });  
+
+
+
+
+    });
 });
 
 
 
 $("#finish-purchase-summary").click(function() {
     $("#purchase-summary").hide();
-    
+
     // remove everything form cart
-    
+
     console.log("Delete items in cart");
     var finalCart = moltin.Cart.Contents().contents;
     var finalProductToDelete = '';
     var removeFromCartCounter = 0;
-    
+
     while ( removeFromCartCounter < productIdentifiers.length) {
-        
+
         console.log(removeFromCartCounter);
-        
+
         finalProductToDelete = productIdentifiers[removeFromCartCounter];
         console.log(finalProductToDelete);
-        
+
         if (finalCart[finalProductToDelete]) {
-            
+
             moltin.Cart.Remove(productIdentifiers[removeFromCartCounter], function() {
                 // Everything is awesome...
                 console.log("Product Deleted");
@@ -1673,20 +1673,20 @@ $("#finish-purchase-summary").click(function() {
         } else {
             console.log("Product not in cart");
         }
-        
+
         removeFromCartCounter += 1;
     }
-    
+
     //var finalCart = moltin.Cart.Contents();
     //var finalCartCounter = finalCart.total_items;
     //$("#cart-counter").text(cartCounter);
-    
-    
+
+
     if ( removeFromCartCounter == productIdentifiers.length) {
         console.log("will reload"); //testing if it works
         //location.reload();
     };
-    
+
 });
 
 $(".hide-cart").click(function() {
@@ -1721,9 +1721,3 @@ $("#back-checkout").click(function() {
     }
 
 });
-
-
-
-
-
-
